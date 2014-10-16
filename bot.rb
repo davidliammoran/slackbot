@@ -9,9 +9,9 @@ require './heroku'
 # Feel free to change the name of the bot here - this controls what name the bot
 # uses when responding.
 if ARGV.first == 'heroku'
-  bot = HerokuSlackAdapter.new(nick: 'pastabot')
+  bot = HerokuSlackAdapter.new(nick: 'dicebot')
 else
-  bot = ChatAdapter::Shell.new(nick: 'pastabot')
+  bot = ChatAdapter::Shell.new(nick: 'dicebot')
 end
 
 # Feel free to ignore this - makes logging easier
@@ -20,12 +20,12 @@ log = ChatAdapter.log
 # Do this thing in this block each time the bot hears a message:
 bot.on_message do |message, info|
   # ignore all messages not directed to this bot
-  unless message.start_with? 'pastabot: '
+  unless message.start_with? 'dicebot: '
     next # don't process the next lines in this block
   end
 
   # Conditionally send a direct message to the person saying whisper
-  if message == 'pastabot: whisper'
+  if message == 'dicebot: whisper'
     # log some info - useful when something doesn't work as expected
     log.debug("Someone whispered! #{info}")
     # and send the actual message
